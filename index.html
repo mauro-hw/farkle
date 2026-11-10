@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Farkle</title>
+<meta name="description" content="Farkle a pura suerte con la puntuación de Kingdom Come: Deliverance II. Proyecto fan no oficial.">
+<meta name="theme-color" content="#1c130c">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Farkle">
+<style>
+@font-face { font-family: 'Grenze Gotisch'; font-style: normal; font-display: swap; font-weight: 500; src: url(fonts/grenze-gotisch-latin-ext-500-normal.woff2) format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Grenze Gotisch'; font-style: normal; font-display: swap; font-weight: 500; src: url(fonts/grenze-gotisch-latin-500-normal.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: 'Grenze Gotisch'; font-style: normal; font-display: swap; font-weight: 700; src: url(fonts/grenze-gotisch-latin-ext-700-normal.woff2) format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Grenze Gotisch'; font-style: normal; font-display: swap; font-weight: 700; src: url(fonts/grenze-gotisch-latin-700-normal.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: 'Alegreya Sans'; font-style: normal; font-display: swap; font-weight: 400; src: url(fonts/alegreya-sans-latin-ext-400-normal.woff2) format('woff2'); unicode-range: U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Alegreya Sans'; font-style: normal; font-display: swap; font-weight: 400; src: url(fonts/alegreya-sans-latin-400-normal.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: 'Alegreya Sans'; font-style: normal; font-display: swap; font-weight: 500; src: url(fonts/alegreya-sans-latin-ext-500-normal.woff2) format('woff2'); unicode-range: U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Alegreya Sans'; font-style: normal; font-display: swap; font-weight: 500; src: url(fonts/alegreya-sans-latin-500-normal.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: 'Alegreya Sans'; font-style: normal; font-display: swap; font-weight: 700; src: url(fonts/alegreya-sans-latin-ext-700-normal.woff2) format('woff2'); unicode-range: U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Alegreya Sans'; font-style: normal; font-display: swap; font-weight: 700; src: url(fonts/alegreya-sans-latin-700-normal.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font:14px/1.4 system-ui,sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<style>
+:root{
+  /* Layout: one candle-lit column — two score tallies, the oak table where the dice fall, the scoring card below */
+  --oak:#1c130c;
+  --oak-2:#2b1d13;
+  --tray:#150e09;
+  --line:#47331f;
+  --ink:#f1e7d3;
+  --muted:#b29f80;
+  --bone:#e8dcc1;
+  --bone-hi:#fbf6ea;
+  --bone-lo:#c3b08a;
+  --pip:#2a170e;
+  --brass:#d8a84e;
+  --brass-ink:#20150a;
+  --wax:#e66a52;
+  --glow:#4a321d;
+  --shadow:rgba(0,0,0,.45);
+  --f-display:"Grenze Gotisch","UnifrakturCook",Georgia,"Times New Roman",serif;
+  --f-body:"Alegreya Sans","Gill Sans","Segoe UI",system-ui,sans-serif;
+  --d:clamp(34px,11.5vw,62px);
+  --gap:clamp(6px,2vw,12px);
+  color-scheme:dark;
+}
+html{background:var(--oak);-webkit-text-size-adjust:100%}
+body{
+  background-color:var(--oak);
+  background-image:radial-gradient(90% 100% at 50% 0%,var(--glow),transparent 70%);
+  background-repeat:no-repeat;background-size:100% 560px;
+  color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.45;
+  overscroll-behavior-y:none;
+}
+.wrap{
+  max-width:560px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:22px 36px;
+  display:grid;gap:16px;
+}
+button,.pill span,.opt,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+
+/* Header */
+.top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.top h1{margin:0;font-family:var(--f-display);font-weight:700;font-size:56px;line-height:.85;color:var(--brass);letter-spacing:.01em}
+.top .tag{margin:0;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* Settings */
+.setup{border:1px solid var(--line);border-radius:12px;background:var(--tray)}
+.setup summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:14px}
+.setup summary::-webkit-details-marker{display:none}
+.setup summary::after{content:"";margin-left:auto;width:7px;height:7px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.setup[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
+.setup summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:12px}
+.sumlbl{font-weight:700}
+.sumval{color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.setform{display:grid;gap:14px;padding:4px 14px 16px}
+.setform fieldset{border:0;margin:0;padding:0;display:grid;gap:6px}
+.setform legend,.optlbl{padding:0;margin:0 0 6px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{position:relative}
+.pill input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.pill span{display:inline-block;padding:7px 15px;border-radius:99px;border:1px solid var(--line);cursor:pointer;font-variant-numeric:tabular-nums}
+.pill input:checked+span{background:var(--brass);border-color:var(--brass);color:var(--brass-ink);font-weight:700}
+.pill input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+
+.opts{display:grid;padding:12px 14px 10px;border-top:1px solid var(--line)}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0;cursor:pointer}
+.opt+.opt{border-top:1px solid var(--line)}
+.opt .txt{display:grid;gap:1px;min-width:0}
+.opt b{font-weight:500;font-size:15.5px}
+.opt small{font-size:13px;color:var(--muted);line-height:1.35}
+.sw{appearance:none;-webkit-appearance:none;flex:none;margin:0;width:46px;height:28px;border-radius:99px;background:var(--line);position:relative;cursor:pointer;transition:background .2s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--muted);transition:transform .2s,background .2s}
+.sw:checked{background:var(--brass)}
+.sw:checked::after{transform:translateX(18px);background:var(--brass-ink)}
+.sw:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* Scoreboard */
+.scores{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.player{min-width:0;padding:12px 14px 11px;border-radius:14px;border:1px solid var(--line);background:var(--oak-2);display:grid;gap:5px;transition:border-color .25s,box-shadow .25s}
+.player.active,.player.won{border-color:var(--brass);box-shadow:inset 0 0 0 1px var(--brass)}
+.pname{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pname .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.turnpill{flex:none;font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--brass-ink);background:var(--brass);border-radius:99px;padding:1px 8px;visibility:hidden}
+.player.active .turnpill,.player.won .turnpill{visibility:visible}
+.pscore{font-family:var(--f-display);font-weight:700;font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+.bar{height:5px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:var(--brass);transition:width .5s ease}
+.left{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Table */
+.table{
+  border-radius:18px;border:1px solid var(--line);
+  padding:16px 14px 18px;display:grid;gap:14px;
+  background-color:var(--oak-2);
+  background-image:
+    radial-gradient(120% 70% at 50% 0%,var(--glow),transparent 75%),
+    repeating-linear-gradient(91deg,rgba(255,240,220,.018) 0 2px,transparent 2px 11px);
+  box-shadow:0 14px 34px var(--shadow);
+}
+.turnline{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.turnline h2{margin:0;font-family:var(--f-display);font-weight:700;font-size:27px;line-height:1.05;text-wrap:balance;min-width:0}
+.pot{display:flex;align-items:baseline;gap:6px;font-variant-numeric:tabular-nums}
+.potlbl{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pot b{font-size:21px}
+.pot .add{color:var(--brass);font-weight:700}
+
+.kept{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;min-height:46px;padding:8px 10px;border-radius:10px;background:var(--tray);border:1px solid var(--line)}
+.kept .empty{margin:0;font-size:13.5px;color:var(--muted)}
+.grp{display:flex;align-items:center;gap:6px}
+.grp b{font-size:13.5px;color:var(--brass);font-variant-numeric:tabular-nums}
+.mrow{display:flex;gap:3px}
+
+.dice{display:flex;justify-content:center;align-items:flex-end;flex-wrap:wrap;gap:var(--gap);min-height:calc(var(--d) + 14px);padding-top:10px}
+
+/* Dice */
+.die{
+  appearance:none;border:0;margin:0;font:inherit;color:inherit;flex:none;box-sizing:border-box;
+  width:var(--s,var(--d));height:var(--s,var(--d));
+  padding:calc(var(--s,var(--d)) * .14);border-radius:20%;
+  display:block;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+  background:radial-gradient(circle at 30% 22%,var(--bone-hi),var(--bone) 55%,var(--bone-lo));
+  box-shadow:inset 0 -3px 0 var(--bone-lo),0 4px 9px var(--shadow);
+  transition:transform .15s ease,box-shadow .15s ease,filter .3s;
+}
+.die .face{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);width:100%;height:100%}
+.die i{display:block;place-self:center;width:72%;height:72%;border-radius:50%}
+.die i.on{background:var(--pip);box-shadow:inset 0 1px 1.5px rgba(0,0,0,.6)}
+.die.pick{cursor:pointer}
+.die.sel{transform:translateY(-9px);box-shadow:0 0 0 3px var(--brass),inset 0 -3px 0 var(--bone-lo),0 12px 16px var(--shadow)}
+@media (hover:hover){
+  .die.pick:hover{transform:translateY(-3px)}
+  .die.pick.sel:hover{transform:translateY(-9px)}
+}
+.die:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.die.dead{filter:saturate(.35) brightness(.62);box-shadow:0 0 0 2px var(--wax),0 4px 9px var(--shadow)}
+.die.ghost{background:transparent;box-shadow:none;border:1.5px dashed var(--line)}
+.die.rolling{animation:tumble .58s cubic-bezier(.2,.75,.3,1) both;animation-delay:calc(var(--i) * 25ms)}
+@keyframes tumble{
+  0%{transform:translate(calc(var(--i) * -4px),-30px) rotate(var(--r)) scale(.82);opacity:.35}
+  65%{transform:translateY(3px) rotate(calc(var(--r) * -0.06))}
+  100%{transform:none;opacity:1}
+}
+.dice.shaking .die:not(.sel){animation:jig .13s linear infinite alternate;animation-delay:calc(var(--i,0) * -41ms)}
+.dice.shaking .die.ghost{border-color:var(--brass)}
+@keyframes jig{
+  0%{transform:translate(-2px,1px) rotate(-7deg)}
+  50%{transform:translate(2px,-3px) rotate(5deg)}
+  100%{transform:translate(-1px,2px) rotate(-2deg)}
+}
+.die.mini{--s:19px;padding:2.5px;border-radius:4px;box-shadow:inset 0 -1px 0 var(--bone-lo),0 1px 2px var(--shadow)}
+.die.mini i{width:80%;height:80%}
+.die.mini i.on{box-shadow:none}
+
+.status{margin:0;min-height:2.9em;text-align:center;font-size:15.5px;color:var(--muted);text-wrap:balance;display:flex;align-items:center;justify-content:center}
+.status.good{color:var(--brass)}
+.status.bad{color:var(--wax)}
+.status.warn{color:var(--ink)}
+
+.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;min-height:56px}
+.btn{
+  appearance:none;font:inherit;cursor:pointer;-webkit-user-select:none;user-select:none;
+  flex:1 1 140px;max-width:250px;min-height:56px;padding:8px 16px;
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  border-radius:11px;border:1px solid var(--line);background:var(--tray);color:var(--ink);
+  transition:filter .15s,opacity .2s;
+}
+.btn .lbl{font-weight:700;font-size:16.5px;line-height:1.15}
+.btn .sub{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.btn.primary{background:var(--brass);border-color:var(--brass);color:var(--brass-ink)}
+.btn.primary .sub{color:var(--brass-ink);opacity:.72}
+.btn:not(:disabled):hover{filter:brightness(1.08)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.btn:disabled{opacity:.38;cursor:not-allowed}
+.setform .btn{justify-self:start;min-height:46px;flex:none;min-width:150px}
+
+/* Rules */
+.rules{border-top:1px solid var(--line);padding-top:6px}
+.rules summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:22px;padding:4px 0;list-style:none;display:flex;align-items:center;gap:10px}
+.rules summary::-webkit-details-marker{display:none}
+.rules summary::after{content:"";width:7px;height:7px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg) translateY(-3px);transition:transform .2s}
+.rules[open] summary::after{transform:rotate(-135deg) translateY(-1px)}
+.rules summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.scoregrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));column-gap:22px;margin-top:6px}
+.srow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--line)}
+.srow .lab{font-size:13px;color:var(--muted)}
+.srow .lhs{display:flex;align-items:center;gap:8px;min-width:0}
+.srow b{font-variant-numeric:tabular-nums;color:var(--brass);font-size:15px}
+.note{margin:12px 0 0;font-size:14px;color:var(--muted);max-width:62ch}
+.howto{margin:14px 0 0;padding-left:1.15em;display:grid;gap:6px;font-size:15px;max-width:62ch}
+.howto li::marker{color:var(--brass)}
+.howto strong{color:var(--brass);font-weight:700}
+
+.foot{font-size:12.5px;color:var(--muted);text-align:center;padding-top:4px;text-wrap:balance}
+
+@media (prefers-reduced-motion:reduce){
+  .die,.btn,.player,.sw,.sw::after{transition:none}
+  .die.rolling,.dice.shaking .die:not(.sel){animation:none}
+  .bar span{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Farkle</h1>
+    <p class="tag">el juego de dados de KCD2</p>
+  </header>
+
+  <details class="setup" id="setup">
+    <summary><span class="sumlbl">Ajustes</span><span class="sumval" id="setupSummary">contra la taberna · a 5.000</span></summary>
+    <form id="setupForm" class="setform">
+      <fieldset>
+        <legend>Rival</legend>
+        <div class="pills">
+          <label class="pill"><input type="radio" name="mode" id="mode-ai" value="ai" checked><span>La taberna</span></label>
+          <label class="pill"><input type="radio" name="mode" id="mode-pvp" value="pvp"><span>Dos jugadores, un móvil</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Meta</legend>
+        <div class="pills">
+          <label class="pill"><input type="radio" name="target" id="target-3000" value="3000"><span>3.000</span></label>
+          <label class="pill"><input type="radio" name="target" id="target-5000" value="5000" checked><span>5.000</span></label>
+          <label class="pill"><input type="radio" name="target" id="target-8000" value="8000"><span>8.000</span></label>
+        </div>
+      </fieldset>
+      <button type="submit" class="btn primary" id="startBtn"><span class="lbl">Empezar partida</span></button>
+    </form>
+    <div class="opts">
+      <p class="optlbl">Opciones</p>
+      <label class="opt" id="shakeRow" for="opt-shake" hidden>
+        <span class="txt"><b>Agitar el móvil para tirar</b><small id="shakeHint">Agita como un cubilete y para: los dados caen.</small></span>
+        <input type="checkbox" class="sw" id="opt-shake">
+      </label>
+      <label class="opt" for="opt-sound">
+        <span class="txt"><b>Sonido de dados</b></span>
+        <input type="checkbox" class="sw" id="opt-sound" checked>
+      </label>
+      <label class="opt" for="opt-risk">
+        <span class="txt"><b>Mostrar riesgo de farkle</b><small>La probabilidad de no sacar nada en la próxima tirada.</small></span>
+        <input type="checkbox" class="sw" id="opt-risk">
+      </label>
+    </div>
+  </details>
+
+  <section class="scores" aria-label="Marcador">
+    <div class="player" id="p0">
+      <div class="pname"><span class="nm">Tú</span><span class="turnpill">turno</span></div>
+      <div class="pscore">0</div>
+      <div class="bar"><span></span></div>
+      <div class="left">faltan 5.000</div>
+    </div>
+    <div class="player" id="p1">
+      <div class="pname"><span class="nm">Rival</span><span class="turnpill">turno</span></div>
+      <div class="pscore">0</div>
+      <div class="bar"><span></span></div>
+      <div class="left">faltan 5.000</div>
+    </div>
+  </section>
+
+  <section class="table" aria-label="Mesa">
+    <div class="turnline">
+      <h2 id="turnName">Tu turno</h2>
+      <div class="pot" id="potWrap"><span class="potlbl">En juego</span><b id="pot">0</b><span class="add" id="potAdd"></span></div>
+    </div>
+    <div class="kept" id="kept"><p class="empty">Aquí se apartan los dados que puntúan.</p></div>
+    <div class="dice" id="dice"></div>
+    <p class="status" id="status" aria-live="polite">Tira los dados.</p>
+    <div class="actions">
+      <button type="button" class="btn primary" id="rollBtn"><span class="lbl">Tirar los dados</span><span class="sub" id="rollSub">6 dados</span></button>
+      <button type="button" class="btn" id="againBtn" hidden><span class="lbl">Tirar de nuevo</span><span class="sub" id="againSub"></span></button>
+      <button type="button" class="btn primary" id="bankBtn" hidden><span class="lbl">Plantarse</span><span class="sub" id="bankSub"></span></button>
+      <button type="button" class="btn primary" id="newBtn" hidden><span class="lbl">Otra partida</span><span class="sub">mismas reglas</span></button>
+    </div>
+  </section>
+
+  <details class="rules" id="rules" open>
+    <summary>Cómo se puntúa</summary>
+    <div class="scoregrid" id="scoreGrid"></div>
+    <p class="note">Cada dado igual por encima de tres dobla el valor del trío: cuatro 4 valen 800, cinco 1.600 y seis 3.200.</p>
+    <ul class="howto">
+      <li>Se tiran seis dados. En cada tirada hay que apartar al menos un dado que puntúe.</li>
+      <li>Las combinaciones solo cuentan con dados de la misma tirada.</li>
+      <li>Después eliges: tirar otra vez los que quedan o plantarte y sumar lo que llevas en la mano.</li>
+      <li>Si una tirada no da nada, es <strong>farkle</strong>: pierdes todo lo de esa mano.</li>
+      <li>Si consigues apartar los seis, son <strong>dados calientes</strong>: los vuelves a tirar todos y sigues sumando.</li>
+      <li>Gana quien llegue antes a la meta.</li>
+    </ul>
+  </details>
+
+  <footer class="foot">Proyecto fan no oficial, sin relación con Warhorse Studios. Puntuación como en Kingdom Come: Deliverance II, pura suerte: sin dados trucados ni insignias.</footer>
+</div>
+
+<script>
+(() => {
+  const FACES = {1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
+  const BASE = [0,1000,200,300,400,500,600];
+  const FUT = [0,40,60,90,150,250,400];        // rough value of rolling r dice
+  const TH  = [0,300,300,400,900,2000,Infinity]; // bank when the hand reaches this with r dice left
+  const NAMES = ['Bořek','Ješek','Ctibor','Zbyněk','Vavřinec','Radslav','Hroznata','Kunhuta','Dobroslava'];
+  const reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const fmt = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  const $ = id => document.getElementById(id);
+
+  function d6(){
+    try {
+      const a = new Uint32Array(1);
+      do { crypto.getRandomValues(a); } while (a[0] >= 4294967292);
+      return a[0] % 6 + 1;
+    } catch (e) { return 1 + Math.floor(Math.random() * 6); }
+  }
+
+  /* ---------- scoring ---------- */
+  function counts(vals){ const c=[0,0,0,0,0,0,0]; for (const v of vals) c[v]++; return c; }
+  function best(c){
+    const n = c[1]+c[2]+c[3]+c[4]+c[5]+c[6];
+    if (!n) return 0;
+    let m = -Infinity;
+    const go = (pts, d) => {
+      const c2 = c.slice();
+      for (let f=1; f<=6; f++){ c2[f] -= (d[f]||0); if (c2[f] < 0) return; }
+      const b = best(c2);
+      if (b > -Infinity && pts + b > m) m = pts + b;
+    };
+    go(1500, {1:1,2:1,3:1,4:1,5:1,6:1});
+    go(500,  {1:1,2:1,3:1,4:1,5:1});
+    go(750,  {2:1,3:1,4:1,5:1,6:1});
+    for (let f=1; f<=6; f++) for (let k=3; k<=c[f]; k++) go(BASE[f] * 2 ** (k-3), {[f]:k});
+    go(100, {1:1});
+    go(50,  {5:1});
+    return m;
+  }
+  // points for a set of kept dice, or null if any die doesn't score
+  function scoreOf(vals){ if (!vals.length) return 0; const b = best(counts(vals)); return b > 0 ? b : null; }
+  function hasScore(vals){ const c = counts(vals); return c[1] > 0 || c[5] > 0 || c.some((x,i) => i > 0 && x >= 3); }
+
+  // exact chance of a farkle with n dice
+  const RISK = [0];
+  for (let n=1; n<=6; n++){
+    let bad = 0; const tot = 6 ** n; const v = new Array(n);
+    for (let i=0; i<tot; i++){ let x=i; for (let j=0;j<n;j++){ v[j]=x%6+1; x=Math.floor(x/6); } if (!hasScore(v)) bad++; }
+    RISK[n] = bad / tot;
+  }
+  const pct = x => (x < 0.1 ? String(Math.round(x*1000)/10).replace('.', ',') : Math.round(x*100)) + ' %';
+
+  /* ---------- device: motion, sound, screen ---------- */
+  const topLevel = (() => { try { return window.self === window.top; } catch (e) { return false; } })();
+  const coarse = !!(window.matchMedia && matchMedia('(pointer: coarse)').matches);
+  const motionOK = topLevel && coarse && typeof window.DeviceMotionEvent !== 'undefined';
+  const needsPerm = motionOK && typeof DeviceMotionEvent.requestPermission === 'function';
+  const SHAKE_HINT = 'Agita como un cubilete y para: los dados caen.';
+
+  const prefs = (() => { try { return JSON.parse(localStorage.getItem('farkle-prefs')) || {}; } catch (e) { return {}; } })();
+  const O = {
+    risk: prefs.risk === true,
+    sound: prefs.sound !== false,
+    shake: motionOK && prefs.shake !== false
+  };
+
+  // Dice sound, synthesised: short bursts of filtered noise sound like bone on wood.
+  let actx = null, NOISE = null, OUT = null;
+  function audio(){
+    try {
+      if (!actx){
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return null;
+        actx = new AC();
+        NOISE = actx.createBuffer(1, Math.floor(actx.sampleRate * 0.05), actx.sampleRate);
+        const d = NOISE.getChannelData(0);
+        for (let i=0; i<d.length; i++) d[i] = (Math.random()*2 - 1) * Math.pow(1 - i/d.length, 4);
+        const comp = actx.createDynamicsCompressor();
+        OUT = actx.createGain(); OUT.gain.value = 0.9;
+        OUT.connect(comp); comp.connect(actx.destination);
+      }
+      if (actx.state === 'suspended') actx.resume().catch(() => {});
+      return actx;
+    } catch (e) { return null; }
+  }
+  const soundOn = () => O.sound && actx && actx.state === 'running';
+  function knock(t, vol, freq, q){
+    const src = actx.createBufferSource(), f = actx.createBiquadFilter(), g = actx.createGain();
+    src.buffer = NOISE; src.playbackRate.value = 0.75 + Math.random()*0.6;
+    f.type = 'bandpass'; f.frequency.value = freq; f.Q.value = q;
+    g.gain.value = vol;
+    src.connect(f); f.connect(g); g.connect(OUT);
+    src.start(t);
+  }
+  function clatter(n){
+    if (!soundOn()) return;
+    const t0 = actx.currentTime + 0.02, k = 5 + n*2;
+    for (let i=0; i<k; i++){
+      const t = t0 + Math.pow(i/k, 1.5) * 0.55 + Math.random()*0.03;
+      knock(t, 2.4 * (1 - i/k*0.75) * (0.55 + Math.random()*0.45), 1700 + Math.random()*2600, 3.5);
+    }
+  }
+  function rattle(){
+    if (!soundOn()) return;
+    const t0 = actx.currentTime;
+    for (let i=0; i<3; i++) knock(t0 + Math.random()*0.07, 1.2 + Math.random()*1.2, 800 + Math.random()*1500, 3);
+  }
+
+  // Keep the screen awake while people are playing.
+  let wake = null;
+  async function keepAwake(){
+    try {
+      if (!wake && navigator.wakeLock && document.visibilityState === 'visible'){
+        wake = await navigator.wakeLock.request('screen');
+        wake.addEventListener('release', () => { wake = null; });
+      }
+    } catch (e) {}
+  }
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && S.players) keepAwake(); });
+  document.addEventListener('click', () => { if (O.sound) audio(); keepAwake(); }, {capture:true});
+
+  // Shake to roll: strong jolts start the shake, a calm moment afterwards throws the dice.
+  const SH = {listening:false, seen:false, first:0, last:0, hits:0, lastSound:0, active:false};
+  const shakeLive = () => O.shake && SH.listening;
+  function shakeNote(text){ $('shakeHint').textContent = text || SHAKE_HINT; }
+  function canShake(){ return S.players && !cur().ai && (S.phase === 'ready' || S.phase === 'choose'); }
+  function setShaking(on){
+    if (SH.active === on) return;
+    SH.active = on;
+    $('dice').classList.toggle('shaking', on);
+  }
+  function onMotion(e){
+    const a = e.accelerationIncludingGravity;
+    if (!O.shake || !a || a.x == null) return;
+    SH.seen = true;
+    const now = performance.now();
+    const jolt = Math.abs(Math.hypot(a.x, a.y, a.z) - 9.81) > 7;
+    if (jolt){
+      if (!SH.hits || now - SH.last > 600){ SH.first = now; SH.hits = 0; }
+      SH.hits++; SH.last = now;
+      if (canShake() && SH.hits >= 2){
+        setShaking(true);
+        if (now - SH.lastSound > 75){ rattle(); SH.lastSound = now; }
+      }
+    } else if (SH.hits && now - SH.last > 280){
+      const hits = SH.hits, dur = SH.last - SH.first;
+      SH.hits = 0;
+      setShaking(false);
+      if (hits >= 4 && dur >= 180) shakeThrow();
+    }
+  }
+  function shakeThrow(){
+    if (!canShake()) return;
+    if (S.phase === 'ready') rollAction();
+    else if (selScore() > 0) againAction();
+    else { S.msg = 'Aparta primero algún dado que puntúe y luego agita.'; S.msgKind = 'warn'; render(); }
+  }
+  async function enableShake(){
+    if (!motionOK) return false;
+    if (needsPerm){
+      let r = 'denied';
+      try { r = await DeviceMotionEvent.requestPermission(); } catch (e) { r = 'error'; }
+      if (r !== 'granted'){
+        shakeNote(r === 'denied' ? 'El móvil no ha dado permiso de movimiento. Cierra y abre la app para que lo vuelva a pedir.' : 'Toca el interruptor para dar permiso de movimiento.');
+        return false;
+      }
+    }
+    if (!O.shake) return false;
+    if (!SH.listening){ window.addEventListener('devicemotion', onMotion); SH.listening = true; }
+    shakeNote();
+    setTimeout(() => { if (SH.listening && !SH.seen) shakeNote('Este dispositivo no envía movimiento. Usa los botones.'); }, 2500);
+    return true;
+  }
+  function disableShake(){
+    window.removeEventListener('devicemotion', onMotion);
+    SH.listening = false; SH.hits = 0; setShaking(false); shakeNote();
+  }
+
+  /* ---------- state ---------- */
+  const S = {};
+  let token = 0;
+  const cur = () => S.players[S.current];
+  const you = p => S.mode === 'ai' && !p.ai;
+  const selVals = () => S.dice.filter(d => d.sel).map(d => d.v);
+  const selScore = () => { const v = selVals(); return v.length ? scoreOf(v) : 0; };
+
+  function savePrefs(){
+    try {
+      localStorage.setItem('farkle-prefs', JSON.stringify({
+        mode:S.mode, target:S.target, rulesOpen:$('rules').open, risk:O.risk, sound:O.sound, shake:O.shake
+      }));
+    } catch (e) {}
+  }
+
+  function newGame(opts){
+    token++;
+    const mode = opts.mode === 'pvp' ? 'pvp' : 'ai';
+    const target = [3000,5000,8000].includes(+opts.target) ? +opts.target : 5000;
+    const rival = NAMES[Math.floor(Math.random()*NAMES.length)];
+    Object.assign(S, {
+      mode, target,
+      players: mode === 'ai'
+        ? [{name:'Tú', score:0, ai:false}, {name:rival, score:0, ai:true}]
+        : [{name:'Jugador 1', score:0, ai:false}, {name:'Jugador 2', score:0, ai:false}],
+      current:0, phase:'ready', dice:[], kept:[], turn:0, lost:0,
+      msg:'', msgKind:'', winner:null, rolling:false,
+      mood: 0.85 + Math.random()*0.35
+    });
+    $('mode-'+mode).checked = true;
+    $('target-'+target).checked = true;
+    savePrefs();
+    startTurn();
+  }
+
+  function readyMsg(){
+    const p = cur();
+    if (p.ai) return `${p.name} agita el cubilete…`;
+    const verb = shakeLive() ? 'agita el móvil o tira los dados' : 'tira los dados';
+    return S.mode === 'pvp' ? `${p.name}, ${verb}.` : verb[0].toUpperCase() + verb.slice(1) + '.';
+  }
+
+  function startTurn(){
+    S.dice = []; S.kept = []; S.turn = 0; S.lost = 0; S.phase = 'ready'; S.rolling = false;
+    const p = cur();
+    S.msg = readyMsg(); S.msgKind = '';
+    render();
+    if (p.ai) aiTurn(token);
+  }
+
+  function nextPlayer(){ S.current = 1 - S.current; startTurn(); }
+
+  async function doRoll(n, t){
+    setShaking(false);
+    S.dice = Array.from({length:n}, () => ({v:d6(), sel:false}));
+    S.rolling = true; S.phase = 'rolling'; render();
+    clatter(n);
+    if (!reduce){
+      const els = [...document.querySelectorAll('#dice .die')];
+      for (let k=0; k<8; k++){
+        await sleep(75);
+        if (t !== token) return false;
+        els.forEach(el => setFace(el, d6()));
+      }
+    }
+    if (t !== token) return false;
+    S.rolling = false; render();
+    return true;
+  }
+
+  // returns false on a farkle
+  function afterRoll(){
+    if (hasScore(S.dice.map(d => d.v))) return true;
+    const p = cur();
+    S.lost = S.turn; S.turn = 0; S.phase = 'farkle'; S.msgKind = 'bad';
+    S.msg = you(p)
+      ? `¡Farkle! No puntúa nada${S.lost ? ` y pierdes ${fmt(S.lost)}` : ''}.`
+      : `¡Farkle! ${p.name} no saca nada${S.lost ? ` y pierde ${fmt(S.lost)}` : ''}.`;
+    render();
+    return false;
+  }
+
+  function commit(){
+    const vals = selVals(), pts = scoreOf(vals);
+    S.kept.push({vals, pts});
+    S.turn += pts;
+    S.dice = S.dice.filter(d => !d.sel);
+  }
+
+  async function bank(t){
+    const p = cur(), gained = S.turn;
+    p.score += gained;
+    S.dice = [];
+    if (p.score >= S.target){
+      S.phase = 'over'; S.winner = S.current; S.msgKind = 'good';
+      const o = S.players[1 - S.current];
+      S.msg = you(p)
+        ? `¡Ganas la partida, ${fmt(p.score)} a ${fmt(o.score)}!`
+        : (S.mode === 'ai' ? `${p.name} gana la partida, ${fmt(p.score)} a ${fmt(o.score)}.` : `¡${p.name} gana, ${fmt(p.score)} a ${fmt(o.score)}!`);
+      render();
+      return;
+    }
+    S.phase = 'banked'; S.msgKind = 'good';
+    S.msg = you(p) ? `Te plantas y sumas ${fmt(gained)}.` : `${p.name} se planta y suma ${fmt(gained)}.`;
+    render();
+    await sleep(1400);
+    if (t !== token) return;
+    nextPlayer();
+  }
+
+  /* ---------- human ---------- */
+  async function humanRoll(n){
+    const t = token;
+    if (!(await doRoll(n, t))) return;
+    if (!afterRoll()){ await sleep(2000); if (t !== token) return; nextPlayer(); return; }
+    S.phase = 'choose';
+    chooseMsg();
+    render();
+  }
+
+  function chooseMsg(){
+    const v = selVals(), s = selScore();
+    if (!v.length){ S.msg = 'Toca los dados que quieras apartar.'; S.msgKind = ''; }
+    else if (s === null){ S.msg = 'Así no vale: cada dado apartado tiene que puntuar.'; S.msgKind = 'warn'; }
+    else { S.msg = `Apartas ${fmt(s)}. ${shakeLive() ? 'Agita para tirar otra vez' : 'Tira otra vez'} o plántate.`; S.msgKind = 'good'; }
+  }
+
+  function refreshMsg(){
+    if (!S.players || cur().ai) return;
+    if (S.phase === 'ready') S.msg = readyMsg();
+    else if (S.phase === 'choose') chooseMsg();
+    render();
+  }
+
+  function rollAction(){ if (S.phase === 'ready' && !cur().ai) humanRoll(6); }
+
+  async function againAction(){
+    if (S.phase !== 'choose' || cur().ai || !selScore()) return;
+    const t = token;
+    commit();
+    let r = S.dice.length;
+    if (r === 0){
+      S.phase = 'hot'; S.msg = '¡Dados calientes! Vuelves a tirar los seis.'; S.msgKind = 'good';
+      render();
+      await sleep(1000);
+      if (t !== token) return;
+      r = 6;
+    }
+    humanRoll(r);
+  }
+
+  $('dice').addEventListener('click', e => {
+    const b = e.target.closest('.die[data-i]');
+    if (!b || S.phase !== 'choose' || cur().ai) return;
+    const i = +b.dataset.i;
+    S.dice[i].sel = !S.dice[i].sel;
+    chooseMsg();
+    render();
+    const again = $('dice').querySelector(`[data-i="${i}"]`);
+    if (again) again.focus({preventScroll:true});
+  });
+
+  $('rollBtn').addEventListener('click', rollAction);
+  $('againBtn').addEventListener('click', againAction);
+
+  $('bankBtn').addEventListener('click', () => {
+    if (S.phase !== 'choose' || cur().ai || !selScore()) return;
+    commit();
+    bank(token);
+  });
+
+  $('newBtn').addEventListener('click', () => newGame({mode:S.mode, target:S.target}));
+
+  $('setupForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    newGame({mode:f.get('mode'), target:f.get('target')});
+    $('setup').open = false;
+  });
+
+  $('rules').addEventListener('toggle', savePrefs);
+
+  $('opt-risk').addEventListener('change', e => { O.risk = e.target.checked; savePrefs(); render(); });
+  $('opt-sound').addEventListener('change', e => {
+    O.sound = e.target.checked; savePrefs();
+    if (O.sound && audio()) setTimeout(() => clatter(2), 30);
+  });
+  $('opt-shake').addEventListener('change', e => {
+    O.shake = e.target.checked;
+    if (O.shake){
+      enableShake().then(ok => {
+        if (!ok){ O.shake = false; e.target.checked = false; }
+        savePrefs(); refreshMsg();
+      });
+    } else { disableShake(); savePrefs(); refreshMsg(); }
+  });
+
+  /* ---------- tavern opponent ---------- */
+  function aiDecide(){
+    const vals = S.dice.map(d => d.v), n = vals.length, p = cur(), opp = S.players[1 - S.current];
+    let maxO = null, heurO = null;
+    for (let m=1; m < (1<<n); m++){
+      const idx = [], sel = [];
+      for (let i=0; i<n; i++) if (m >> i & 1){ idx.push(i); sel.push(vals[i]); }
+      const pts = scoreOf(sel);
+      if (pts === null) continue;
+      let r = n - idx.length; if (r === 0) r = 6;
+      if (!maxO || pts > maxO.pts) maxO = {idx, pts, r};
+      const h = pts + FUT[r];
+      if (!heurO || h > heurO.h) heurO = {idx, pts, r, h};
+    }
+    const push = (opp.score >= S.target - 1200 && opp.score > p.score) ? 1.7 : 1;
+    const th = r => r === 6 ? Infinity : TH[r] * push * S.mood;
+    const hand = o => S.turn + o.pts;
+    if (p.score + hand(maxO) >= S.target) return {idx:maxO.idx, bank:true};
+    if (maxO.r === 6) return {idx:maxO.idx, bank:false};
+    if (hand(maxO) >= th(maxO.r)) return {idx:maxO.idx, bank:true};
+    if (heurO.r === 6) return {idx:heurO.idx, bank:false};
+    if (hand(heurO) >= th(heurO.r)) return {idx:maxO.idx, bank:true};
+    return {idx:heurO.idx, bank:false};
+  }
+
+  async function aiTurn(t){
+    await sleep(850);
+    if (t !== token) return;
+    let r = 6;
+    while (true){
+      if (!(await doRoll(r, t))) return;
+      if (!afterRoll()){ await sleep(2000); if (t !== token) return; nextPlayer(); return; }
+      const p = cur();
+      S.phase = 'ai'; S.msg = `${p.name} mira los dados…`; S.msgKind = ''; render();
+      await sleep(750);
+      if (t !== token) return;
+      const d = aiDecide();
+      d.idx.forEach(i => { S.dice[i].sel = true; });
+      const vals = selVals();
+      S.msg = `${p.name} aparta ${vals.slice().sort((a,b)=>a-b).join('·')} (+${fmt(scoreOf(vals))}).`;
+      render();
+      await sleep(1050);
+      if (t !== token) return;
+      commit();
+      if (d.bank){ await bank(t); return; }
+      r = S.dice.length;
+      if (r === 0){
+        S.phase = 'hot'; S.msg = `¡Dados calientes! ${p.name} vuelve a tirar los seis.`; S.msgKind = 'good';
+        render(); await sleep(1100); r = 6;
+      } else {
+        S.phase = 'ai'; S.msg = `${p.name} se arriesga con ${r === 1 ? '1 dado' : r + ' dados'}.`; S.msgKind = '';
+        render(); await sleep(750);
+      }
+      if (t !== token) return;
+    }
+  }
+
+  /* ---------- render ---------- */
+  function pips(v){ let s = ''; for (let i=0; i<9; i++) s += `<i class="${FACES[v].includes(i) ? 'on' : ''}"></i>`; return `<span class="face">${s}</span>`; }
+  function setFace(el, v){ const f = el.firstElementChild; if (!f) return; [...f.children].forEach((c,i) => { c.className = FACES[v].includes(i) ? 'on' : ''; }); }
+  const mini = vals => `<span class="mrow">${vals.map(v => `<span class="die mini" aria-hidden="true">${pips(v)}</span>`).join('')}</span>`;
+  const diceWord = n => `${n} ${n === 1 ? 'dado' : 'dados'}`;
+
+  function render(){
+    const p = cur(), ph = S.phase, human = !p.ai;
+    $('setupSummary').textContent = (S.mode === 'ai' ? 'contra la taberna' : 'dos jugadores') + ' · a ' + fmt(S.target);
+
+    S.players.forEach((pl, i) => {
+      const el = $('p' + i);
+      el.querySelector('.nm').textContent = pl.name;
+      el.querySelector('.pscore').textContent = fmt(pl.score);
+      el.querySelector('.bar span').style.width = Math.min(100, pl.score / S.target * 100) + '%';
+      const left = Math.max(0, S.target - pl.score);
+      el.querySelector('.left').textContent = left ? `faltan ${fmt(left)}` : 'meta alcanzada';
+      el.classList.toggle('active', ph !== 'over' && i === S.current);
+      el.classList.toggle('won', ph === 'over' && i === S.winner);
+      el.querySelector('.turnpill').textContent = ph === 'over' ? 'gana' : 'turno';
+    });
+
+    $('turnName').textContent = ph === 'over' ? 'Fin de la partida' : (you(p) ? 'Tu turno' : `Turno de ${p.name}`);
+    const sv = ph === 'choose' ? selScore() : 0;
+    $('potWrap').hidden = ph === 'over';
+    $('pot').textContent = fmt(S.turn);
+    $('potAdd').textContent = sv ? `+${fmt(sv)}` : '';
+
+    $('kept').innerHTML = S.kept.length
+      ? S.kept.map(g => `<div class="grp">${mini(g.vals.slice().sort((a,b)=>a-b))}<b>+${fmt(g.pts)}</b></div>`).join('')
+      : '<p class="empty">Aquí se apartan los dados que puntúan.</p>';
+
+    const box = $('dice'), canPick = ph === 'choose' && human;
+    if (!S.dice.length){
+      const n = (ph === 'ready' || ph === 'hot') ? 6 : 0;
+      box.innerHTML = Array.from({length:n}, (_, i) => `<span class="die ghost" style="--i:${i}" aria-hidden="true"></span>`).join('');
+    } else {
+      box.innerHTML = S.dice.map((d, i) => {
+        const cls = ['die', d.sel ? 'sel' : '', S.rolling ? 'rolling' : '', ph === 'farkle' ? 'dead' : '', canPick ? 'pick' : ''].filter(Boolean).join(' ');
+        const spin = (i % 2 ? 1 : -1) * (150 + i * 30);
+        return `<button type="button" class="${cls}" data-i="${i}" style="--i:${i};--r:${spin}deg"`
+          + (canPick ? '' : ' tabindex="-1" aria-disabled="true"')
+          + ` aria-pressed="${d.sel}" aria-label="Dado ${S.rolling ? 'rodando' : d.v}${d.sel ? ', apartado' : ''}">${pips(S.rolling ? d6() : d.v)}</button>`;
+      }).join('');
+    }
+
+    const st = $('status');
+    st.textContent = S.msg;
+    st.className = 'status' + (S.msgKind ? ' ' + S.msgKind : '');
+
+    const risk = n => O.risk ? ` · riesgo ${pct(RISK[n])}` : '';
+    const showRoll = ph === 'ready' && human;
+    $('rollBtn').hidden = !showRoll;
+    if (showRoll) $('rollSub').textContent = diceWord(6) + risk(6);
+
+    const showChoose = ph === 'choose' && human;
+    $('againBtn').hidden = !showChoose;
+    $('bankBtn').hidden = !showChoose;
+    if (showChoose){
+      const valid = sv > 0;
+      const r = S.dice.length - S.dice.filter(d => d.sel).length;
+      $('againBtn').disabled = !valid;
+      $('bankBtn').disabled = !valid;
+      $('againSub').textContent = !valid ? 'aparta algo que puntúe'
+        : (r === 0 ? '6 dados · ¡calientes!' : diceWord(r) + risk(r));
+      $('bankSub').textContent = valid ? `te llevas ${fmt(S.turn + sv)}` : `${fmt(S.turn)} en juego`;
+    }
+    $('newBtn').hidden = ph !== 'over';
+  }
+
+  /* ---------- scoring card ---------- */
+  const ROWS = [
+    [[1],'100'], [[5],'50'],
+    [[1,1,1],'1.000'], [[2,2,2],'200'], [[3,3,3],'300'], [[4,4,4],'400'], [[5,5,5],'500'], [[6,6,6],'600'],
+    [[1,2,3,4,5],'500','escalera baja'], [[2,3,4,5,6],'750','escalera alta'], [[1,2,3,4,5,6],'1.500','escalera completa']
+  ];
+  $('scoreGrid').innerHTML = ROWS.map(([v, pts, lab]) =>
+    `<div class="srow"><span class="lhs">${mini(v)}${lab ? `<span class="lab">${lab}</span>` : ''}</span><b>${pts}</b></div>`
+  ).join('');
+
+  /* ---------- boot ---------- */
+  const hot = window.claude && window.claude.hot;
+  if (hot && typeof hot.snapshot === 'function'){
+    hot.snapshot(() => ({S: JSON.parse(JSON.stringify(S))}));
+  }
+
+  function setupOptions(){
+    $('opt-risk').checked = O.risk;
+    $('opt-sound').checked = O.sound;
+    $('opt-shake').checked = O.shake;
+    $('shakeRow').hidden = !motionOK;
+    if (!O.shake) return;
+    if (needsPerm){
+      // iPhone asks for motion permission only from a tap: arm on the first one.
+      document.addEventListener('click', function arm(){
+        if (O.shake && !SH.listening) enableShake().then(ok => { if (ok) refreshMsg(); });
+      }, {capture:true, once:true});
+    } else {
+      enableShake();
+    }
+  }
+
+  function start(data){
+    if (prefs.rulesOpen === false) $('rules').open = false;
+    setupOptions();
+    if (data && data.S && data.S.players){
+      Object.assign(S, data.S);
+      S.rolling = false;
+      $('mode-' + S.mode).checked = true;
+      $('target-' + S.target).checked = true;
+      if (S.phase === 'over' || (S.phase === 'choose' && !cur().ai)){ refreshMsg(); return; }
+      if (S.phase === 'farkle' || S.phase === 'banked'){ nextPlayer(); return; }
+      if (S.phase === 'hot' && !cur().ai){ humanRoll(6); return; }
+      startTurn();
+      return;
+    }
+    newGame({mode:prefs.mode, target:prefs.target});
+  }
+
+  if (hot && typeof hot.ready === 'function') hot.ready(start);
+  else start((hot && hot.data) || {});
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+}
+</script>
+</body>
+</html>
