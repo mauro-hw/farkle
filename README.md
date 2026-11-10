@@ -15,6 +15,10 @@ A fan-made dice game inspired by the one played in the taverns of **Kingdom Come
 - **Dice sounds** (can be turned off) and, if you switch it on, the **farkle risk** of the next roll.
 - **Works without internet** once installed, and keeps the screen on while you play.
 
+## Recommended listening
+
+For the full tavern experience, play **"The Hole in the Wall"** or **"Siamo Tutti Pronti"** from the KCD2 soundtrack in the background.
+
 ## Install on your phone
 
 **Android (Chrome):** open the game link, tap the ⋮ menu and choose **Install app** (or **Add to Home screen**).
