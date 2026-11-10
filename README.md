@@ -2,7 +2,7 @@
 
 Juego fan de dados inspirado en el que se juega en las tabernas de **Kingdom Come: Deliverance** y **Kingdom Come: Deliverance II**, con la misma puntuación. Se instala en el móvil como una app, funciona sin conexión y es pura suerte: no hay dados trucados ni insignias. Tú decides cuándo plantarte.
 
-**▶ Jugar:** https://tu-usuario.github.io/farkle/
+**▶ Jugar:** https://mauro-hw.github.io/farkle/
 
 > Proyecto fan no oficial, sin relación con Warhorse Studios ni con la editora del juego. Kingdom Come: Deliverance es una marca de sus respectivos propietarios. No usa arte, música, sonidos ni textos del juego. El Farkle es un juego de dados tradicional.
 
