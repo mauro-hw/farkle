@@ -1,4 +1,4 @@
-const CACHE = 'farkle-v2';
+const CACHE = 'farkle-v3';
 const FILES = ["./", "index.html", "manifest.webmanifest", "icons/icon.svg", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png", "fonts/grenze-gotisch-latin-ext-500-normal.woff2", "fonts/grenze-gotisch-latin-500-normal.woff2", "fonts/grenze-gotisch-latin-ext-700-normal.woff2", "fonts/grenze-gotisch-latin-700-normal.woff2", "fonts/alegreya-sans-latin-ext-400-normal.woff2", "fonts/alegreya-sans-latin-400-normal.woff2", "fonts/alegreya-sans-latin-ext-500-normal.woff2", "fonts/alegreya-sans-latin-500-normal.woff2", "fonts/alegreya-sans-latin-ext-700-normal.woff2", "fonts/alegreya-sans-latin-700-normal.woff2"];
 
 self.addEventListener('install', e => {

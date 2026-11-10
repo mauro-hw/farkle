@@ -1,76 +1,76 @@
-# Farkle · el juego de dados de KCD2
+# Farkle · the KCD2 dice game
 
-Juego fan de dados inspirado en el que se juega en las tabernas de **Kingdom Come: Deliverance** y **Kingdom Come: Deliverance II**, con la misma puntuación. Se instala en el móvil como una app, funciona sin conexión y es pura suerte: no hay dados trucados ni insignias. Tú decides cuándo plantarte.
+A fan-made dice game inspired by the one played in the taverns of **Kingdom Come: Deliverance** and **Kingdom Come: Deliverance II**, with the same scoring. It installs on your phone like an app, works offline and is pure luck: no weighted dice, no badges. You decide when to bank.
 
-**▶ Jugar:** https://mauro-hw.github.io/farkle/
+**▶ Play:** https://mauro-hw.github.io/farkle/
 
-> Proyecto fan no oficial, sin relación con Warhorse Studios ni con la editora del juego. Kingdom Come: Deliverance es una marca de sus respectivos propietarios. No usa arte, música, sonidos ni textos del juego. El Farkle es un juego de dados tradicional.
+> Unofficial fan project, not affiliated with Warhorse Studios or the game's publisher. Kingdom Come: Deliverance is a trademark of its respective owners. No art, music, sounds or text from the game are used. Farkle is a traditional dice game.
 
-## Qué incluye
+## Features
 
-- **Contra la taberna:** un rival controlado por el móvil, que a veces arriesga y a veces se planta antes de tiempo.
-- **Dos jugadores, un móvil:** os vais pasando el móvil en cada turno.
-- **Agitar para tirar:** agitas el móvil como un cubilete y, cuando paras, caen los dados.
-- **Meta a 3.000, 5.000 u 8.000 puntos.**
-- **Sonido de dados** (se puede quitar) y, si lo activas, el **riesgo de farkle** de la próxima tirada.
-- **Funciona sin internet** una vez instalada y mantiene la pantalla encendida mientras jugáis.
+- **Against the tavern:** an opponent played by the phone, who sometimes pushes their luck and sometimes banks too early.
+- **Two players, one phone:** pass the phone back and forth each turn.
+- **Shake to roll:** shake the phone like a dice cup and, when you stop, the dice fall.
+- **Play to 3,000, 5,000 or 8,000 points.**
+- **Dice sounds** (can be turned off) and, if you switch it on, the **farkle risk** of the next roll.
+- **Works without internet** once installed, and keeps the screen on while you play.
 
-## Instalar en el móvil
+## Install on your phone
 
-**Android (Chrome):** abre el enlace de juego, pulsa el menú ⋮ y elige **Instalar aplicación** (o **Añadir a pantalla de inicio**).
+**Android (Chrome):** open the game link, tap the ⋮ menu and choose **Install app** (or **Add to Home screen**).
 
-**iPhone (Safari):** abre el enlace de juego, pulsa **Compartir** y elige **Añadir a pantalla de inicio**. La primera vez que toques la pantalla, el iPhone te pedirá permiso para usar el movimiento: acéptalo para poder agitar.
+**iPhone (Safari):** open the game link, tap **Share** and choose **Add to Home Screen**. The first time you tap the screen, the iPhone will ask for permission to use motion: allow it so you can shake.
 
-En el ordenador se juega desde el navegador con los botones. Agitar solo funciona en móviles y tabletas.
+On a computer, play in the browser with the buttons. Shaking only works on phones and tablets.
 
-## Cómo se juega
+## How to play
 
-1. Tiras seis dados.
-2. Apartas al menos un dado que puntúe. Las combinaciones solo cuentan con dados de la misma tirada.
-3. Eliges: vuelves a tirar los dados que quedan o te plantas y sumas los puntos de la mano.
-4. Si una tirada no puntúa nada, es **farkle**: pierdes todo lo que llevabas en esa mano.
-5. Si consigues apartar los seis dados, son **dados calientes**: vuelves a tirar los seis y sigues sumando.
-6. Gana quien llegue antes a la meta.
+1. Roll six dice.
+2. Set aside at least one scoring die. Combinations only count with dice from the same roll.
+3. Choose: roll the remaining dice again, or bank and add this turn's points to your score.
+4. If a roll scores nothing, it's a **farkle**: you lose everything from that turn.
+5. If you set aside all six dice, it's **hot dice**: roll all six again and keep adding.
+6. The first to reach the goal wins.
 
-## Puntuación
+## Scoring
 
-| Combinación | Puntos |
+| Combination | Points |
 |---|---:|
-| Un ⚀ (1) | 100 |
-| Un ⚄ (5) | 50 |
-| Tres ⚀ ⚀ ⚀ | 1.000 |
-| Tres ⚁ ⚁ ⚁ | 200 |
-| Tres ⚂ ⚂ ⚂ | 300 |
-| Tres ⚃ ⚃ ⚃ | 400 |
-| Tres ⚄ ⚄ ⚄ | 500 |
-| Tres ⚅ ⚅ ⚅ | 600 |
-| Escalera baja ⚀ ⚁ ⚂ ⚃ ⚄ | 500 |
-| Escalera alta ⚁ ⚂ ⚃ ⚄ ⚅ | 750 |
-| Escalera completa ⚀ ⚁ ⚂ ⚃ ⚄ ⚅ | 1.500 |
+| One ⚀ (1) | 100 |
+| One ⚄ (5) | 50 |
+| Three ⚀ ⚀ ⚀ | 1,000 |
+| Three ⚁ ⚁ ⚁ | 200 |
+| Three ⚂ ⚂ ⚂ | 300 |
+| Three ⚃ ⚃ ⚃ | 400 |
+| Three ⚄ ⚄ ⚄ | 500 |
+| Three ⚅ ⚅ ⚅ | 600 |
+| Low straight ⚀ ⚁ ⚂ ⚃ ⚄ | 500 |
+| High straight ⚁ ⚂ ⚃ ⚄ ⚅ | 750 |
+| Full straight ⚀ ⚁ ⚂ ⚃ ⚄ ⚅ | 1,500 |
 
-Cada dado igual por encima de tres dobla el valor del trío: cuatro ⚃ valen 800, cinco 1.600 y seis 3.200.
+Each matching die beyond three doubles the value of the three of a kind: four ⚃ are worth 800, five 1,600 and six 3,200.
 
-## Privacidad
+## Privacy
 
-No hay anuncios, cuentas ni seguimiento. Los ajustes (rival, meta, sonido…) se guardan solo en tu dispositivo.
+No ads, no accounts, no tracking. Your settings (opponent, goal, sound…) are stored only on your device.
 
-## Detalles técnicos
+## Technical details
 
-Es una app web progresiva (PWA) hecha con HTML, CSS y JavaScript, sin librerías ni proceso de compilación.
+It's a progressive web app (PWA) made with plain HTML, CSS and JavaScript, with no libraries and no build step.
 
 ```
-index.html             el juego completo
-sw.js                  service worker: guarda la app para jugar sin conexión
-manifest.webmanifest   nombre, icono y colores al instalarla
-icons/                 iconos de la app
-fonts/                 tipografías incluidas para que funcionen sin conexión
+index.html             the whole game
+sw.js                  service worker: caches the app so it plays offline
+manifest.webmanifest   name, icon and colours when installed
+icons/                 app icons
+fonts/                 bundled fonts so they work offline
 ```
 
-Para publicarla en tu propio GitHub Pages: sube estos archivos a un repositorio público y activa **Settings → Pages → Deploy from a branch**, rama `main`, carpeta `/ (root)`.
+To publish it on your own GitHub Pages: upload these files to a public repository and turn on **Settings → Pages → Deploy from a branch**, branch `main`, folder `/ (root)`.
 
-Las tiradas usan el generador aleatorio criptográfico del navegador (`crypto.getRandomValues`), así que todos los dados son justos.
+Rolls use the browser's cryptographic random number generator (`crypto.getRandomValues`), so every die is fair.
 
-## Créditos
+## Credits
 
-- Tipografías [Grenze Gotisch](https://fonts.google.com/specimen/Grenze+Gotisch) y [Alegreya Sans](https://fonts.google.com/specimen/Alegreya+Sans), con licencia SIL Open Font License.
-- Puntuación basada en el minijuego de dados de Kingdom Come: Deliverance II, de Warhorse Studios.
+- Fonts [Grenze Gotisch](https://fonts.google.com/specimen/Grenze+Gotisch) and [Alegreya Sans](https://fonts.google.com/specimen/Alegreya+Sans), under the SIL Open Font License.
+- Scoring based on the dice minigame in Kingdom Come: Deliverance II, by Warhorse Studios.
